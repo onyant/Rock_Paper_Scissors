@@ -1,0 +1,29 @@
+body{
+    background-color: black;
+}
+
+header h1{
+    color: white;
+    size: 50px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+section .flex-cont{
+    padding: 250px 10px 10px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section .flex-cont button{
+    flex :1;
+    height: 25vh;
+
+}
+section .reponse{
+    color: white;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}

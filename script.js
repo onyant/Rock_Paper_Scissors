@@ -1,6 +1,7 @@
 const pierre="Pierre"
 const feuille="Feuille"
 const ciseaux ="Ciseaux"
+
 function getComputerChoice(){
     let number= Math.floor(Math.random() * 3);
     switch (number) {
@@ -24,14 +25,14 @@ function play( playerSelection , computerSelection){
         switch (comp) {
             case "pierre":
                 console.log("Egalité")
-                return 0
+                return "Egalité"
             case "feuille":
                 console.log("Vous avez perdu")
-                return 0
+                return "Vous avez perdu"
             
             case "ciseaux":
                 console.log("Vous avez gagné!!!")
-                return 1
+                return "Vous avez gagné!!!"
             default:
                 console.log("vorte saisie n'est pas bonne")
                 break;
@@ -41,32 +42,32 @@ function play( playerSelection , computerSelection){
             switch (comp) {
                 case "pierre":
                     console.log("Vous avez gagné!!!")
-                    return 1
+                    return "Vous avez gagné!!!"
                 case "feuille":
                     
                     console.log("Egalité")
-                    return 0
+                    return "Egalité"
                 
                 case "ciseaux":
                     console.log("Vous avez perdu")
                     
-                    return 0
+                    return "Vous avez perdu"
                 default:
                     console.log("vorte saisie n'est pas bonne")
                     break;
             }
     }
         else if(player == "ciseaux"){
-                switch (comp) {
+                switch (comp    ) {
                     case "pierre":
                         console.log("Vous avez perdu")
-                        return 0
+                        return "Vous avez perdu"
                     case "feuille":
                         console.log("Vous avez gagné!!!")
-                        return 1
+                        return "Vous avez gagné!!!"
                     case "ciseaux":
                         console.log("Egalité")
-                        return 0
+                        return "Egalité"
                     default:
                         console.log("vorte saisie n'est pas bonne")
                         break;
@@ -78,16 +79,27 @@ function play( playerSelection , computerSelection){
     }
 }
 
-function game(i){
-    let score=0
-    let maincomp=0
-    for(let j=0;j<i;j++){
-        maincomp=getComputerChoice()
-        let mainJoueur = prompt ( "Saisissez un votre coup (Pierre, Feuille ou Ciseaux)" ,"Pierre" ) 
-        console.log("ordi:"+maincomp+" Vous :"+ mainJoueur)
-       score+= play(mainJoueur, maincomp)
-    }
-    console.log("Vous avez gagné "+score+" manche   ")
+
+const buttons=document.querySelectorAll('button')
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+      
+      game(button)
+     
+    });
+  });
+
+const cont=document.querySelector("section")
+const divRes=document.createElement('h1');
+divRes.classList.add('reponse');
+function game(button){
+    const ordi=getComputerChoice()
+    let txt =play(button.id, ordi)
+    
+    divRes.textContent=txt
+    cont.appendChild(divRes)
+    
 }
 
-game(5)
