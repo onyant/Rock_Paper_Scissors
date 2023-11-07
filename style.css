@@ -9,9 +9,11 @@ header h1{
     font-family: 'Courier New', Courier, monospace;
 }
 
+section{
+    padding: 150px 10px 10px 10px;
+}
 section .flex-cont{
-    padding: 250px 10px 10px 10px;
-
+   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,5 +27,12 @@ section .flex-cont button{
 section .reponse{
     color: white;
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace; 
+}
+section .score-container{
+        background-color: white;
+        color: black;
+        font-family: 'Courier New', Courier, monospace; 
+        text-align: center;
+        
 }

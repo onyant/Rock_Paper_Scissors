@@ -1,7 +1,9 @@
 const pierre="Pierre"
 const feuille="Feuille"
 const ciseaux ="Ciseaux"
-
+var nbM=0
+var  joueur =0
+var scoreordi =0
 function getComputerChoice(){
     let number= Math.floor(Math.random() * 3);
     switch (number) {
@@ -28,10 +30,12 @@ function play( playerSelection , computerSelection){
                 return "Egalité"
             case "feuille":
                 console.log("Vous avez perdu")
+                scoreordi+=1
                 return "Vous avez perdu"
-            
+
             case "ciseaux":
                 console.log("Vous avez gagné!!!")
+                joueur+=1
                 return "Vous avez gagné!!!"
             default:
                 console.log("vorte saisie n'est pas bonne")
@@ -42,6 +46,7 @@ function play( playerSelection , computerSelection){
             switch (comp) {
                 case "pierre":
                     console.log("Vous avez gagné!!!")
+                    joueur+=1
                     return "Vous avez gagné!!!"
                 case "feuille":
                     
@@ -50,7 +55,7 @@ function play( playerSelection , computerSelection){
                 
                 case "ciseaux":
                     console.log("Vous avez perdu")
-                    
+                    scoreordi+=1
                     return "Vous avez perdu"
                 default:
                     console.log("vorte saisie n'est pas bonne")
@@ -61,9 +66,11 @@ function play( playerSelection , computerSelection){
                 switch (comp    ) {
                     case "pierre":
                         console.log("Vous avez perdu")
+                        scoreordi+=1
                         return "Vous avez perdu"
                     case "feuille":
                         console.log("Vous avez gagné!!!")
+                        joueur+=1
                         return "Vous avez gagné!!!"
                     case "ciseaux":
                         console.log("Egalité")
@@ -94,12 +101,18 @@ buttons.forEach((button) => {
 const cont=document.querySelector("section")
 const divRes=document.createElement('h1');
 divRes.classList.add('reponse');
+const contS=document.querySelector('.score-container')
+const p =document.createElement('p')
+
+
 function game(button){
+    nbM+=1
     const ordi=getComputerChoice()
     let txt =play(button.id, ordi)
     
     divRes.textContent=txt
     cont.appendChild(divRes)
-    
+    p.textContent=joueur +" - " + scoreordi
+    contS.appendChild(p)
 }
 
